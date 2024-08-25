@@ -7,7 +7,6 @@ import (
 
 const (
 	DatetimeFormat = "02-Jan-2006 3:04"
-	NewYork        = "America/New_York"
 )
 
 func FormatDatetimeToMMDD(datetime *time.Time) string {
@@ -38,15 +37,10 @@ func GetCurrentDateMinus7InMMDD() string {
 	return FormatDatetimeToMMDD(&datetime)
 }
 
-func FormatDatetimeToET(datetime *time.Time) string {
-	if datetime == nil {
+func FormatDatetimeToET(datetime *time.Time, location *time.Location) string {
+	if datetime == nil || location == nil {
 		return ""
 	}
 
-	location, err := time.LoadLocation(NewYork)
-	if err != nil {
-		return datetime.Format(DatetimeFormat)
-	}
-
-	return fmt.Sprintf("%s ET", datetime.In(location).Format(DatetimeFormat))
+	return datetime.In(location).Format(DatetimeFormat)
 }
