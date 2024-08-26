@@ -1,4 +1,4 @@
-package logging
+package v1
 
 type LogLevel int64
 

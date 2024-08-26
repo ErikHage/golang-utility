@@ -1,11 +1,12 @@
-package logging
+package v1
 
 import (
 	"encoding/json"
 	"fmt"
-	"golang-utility/pkg/errors"
 	"log"
 	"net/http"
+
+	"golang-utility/pkg/errors"
 )
 
 type Logger interface {
