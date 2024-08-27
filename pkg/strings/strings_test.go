@@ -1,13 +1,12 @@
 package strings
 
 import (
-	"github.com/google/uuid"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
 
 func Test_GenerateUUID(t *testing.T) {
-	id := uuid.New().String()
+	id := GenerateUUID()
 	length := len(id)
 
 	assert.Truef(
