@@ -16,3 +16,17 @@ func Test_GenerateUUID(t *testing.T) {
 		length,
 	)
 }
+
+func Test_Truncate(t *testing.T) {
+	expected := "truncatedString"
+	actual := Truncate("truncatedStringCutoff", 15)
+
+	assert.Equalf(
+		t,
+		expected,
+		actual,
+		"Expected %s, but was %s",
+		expected,
+		actual,
+	)
+}
