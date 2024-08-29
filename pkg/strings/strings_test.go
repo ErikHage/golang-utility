@@ -42,3 +42,27 @@ func Test_RandomString(t *testing.T) {
 		actual,
 	)
 }
+
+func Test_NullSafeString_NotNil(t *testing.T) {
+	expected := "some string"
+	actual := NullSafeString(&expected)
+
+	assert.NotNilf(
+		t,
+		actual,
+		"Expected string to not be nil, but was nil",
+	)
+}
+
+func Test_NullSafeString_Nil(t *testing.T) {
+	expected := ""
+	actual := NullSafeString(&expected)
+
+	assert.Equalf(
+		t,
+		expected,
+		actual,
+		"Expected string to be empty string, but was %s",
+		actual,
+	)
+}
