@@ -30,3 +30,15 @@ func Test_Truncate(t *testing.T) {
 		actual,
 	)
 }
+
+func Test_RandomString(t *testing.T) {
+	actual := RandomString(15)
+
+	assert.Truef(
+		t,
+		len(actual) == 15,
+		"Expected string of length 15, but was %d [%s]",
+		len(actual),
+		actual,
+	)
+}
