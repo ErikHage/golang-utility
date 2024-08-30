@@ -66,3 +66,27 @@ func Test_NullSafeString_Nil(t *testing.T) {
 		actual,
 	)
 }
+
+func Test_NullSafeBool_NotNil(t *testing.T) {
+	expected := true
+	actual := NullSafeBool(&expected)
+
+	assert.NotNilf(
+		t,
+		actual,
+		"Expected bool to not be nil, but was nil",
+	)
+}
+
+func Test_NullSafeBool_Nil(t *testing.T) {
+	expected := ""
+	actual := NullSafeBool(nil)
+
+	assert.Equalf(
+		t,
+		expected,
+		actual,
+		"Expected bool to be empty string, but was %s",
+		actual,
+	)
+}
