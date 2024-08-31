@@ -3,6 +3,7 @@ package strings
 import (
 	"github.com/stretchr/testify/assert"
 	"testing"
+	"time"
 )
 
 func Test_GenerateUUID(t *testing.T) {
@@ -87,6 +88,30 @@ func Test_NullSafeBool_Nil(t *testing.T) {
 		expected,
 		actual,
 		"Expected bool to be empty string, but was %s",
+		actual,
+	)
+}
+
+func Test_NullSafeTime_NotNil(t *testing.T) {
+	expected := time.Now()
+	actual := NullSafeTime(&expected)
+
+	assert.NotNilf(
+		t,
+		actual,
+		"Expected time.Time to not be nil, but was nil",
+	)
+}
+
+func Test_NullSafeTime_Nil(t *testing.T) {
+	expected := ""
+	actual := NullSafeTime(nil)
+
+	assert.Equalf(
+		t,
+		expected,
+		actual,
+		"Expected time.Time to be empty string, but was %s",
 		actual,
 	)
 }
